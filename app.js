@@ -52,5 +52,18 @@ weatherApp.controller('todayController', ['$scope', '$filter', '$http', 'locatio
   $scope.city= locationService.city;
   $scope.state= locationService.state;
 
+  var baseURL = "http://api.wunderground.com/api/";
+
+  $http.get('data/key.json')
+    .success(function(data){
+      var key = data.appKey;
+      $http.get(baseURL + key + '/conditions/q/' + $scope.state + '/' + $scope.city +'.json')
+        .success(function(data){
+          $scope.weather = data.current_observation.weather;
+          $scope.temperature = data.current_observation.temp_f;
+          $scope.wind = data.current_observation.wind_string;
+          console.log(data);
+        });
+    });
 
 }]);

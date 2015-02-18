@@ -11,3 +11,11 @@ h1{
   width: 298px;
 }
 
+.text-center{
+  text-align: center;
+}
+
+footer{
+  text-align: center;
+  padding-top: 15%;
+}
