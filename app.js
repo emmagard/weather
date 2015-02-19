@@ -55,7 +55,7 @@ weatherApp.controller('homeController', ['$scope', '$filter', '$http', 'location
   $scope.state = locationService.state;
 
   $scope.$watch('city', function(){
-    locationService.city = $filter('capitalize')($scope.city);
+    locationService.city = $scope.city;
   });
 
   $scope.$watch('state', function(){
