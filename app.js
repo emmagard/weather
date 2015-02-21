@@ -13,6 +13,10 @@ weatherApp.config(function($routeProvider){
   .when('/tomorrow', {
     templateUrl: 'views/tomorrow.html',
     controller: 'tomorrowController'
+  })
+  .when('/fiveday', {
+    templateUrl: 'views/fiveday.html',
+    controller: 'fiveController'
   });
 });
 
@@ -131,7 +135,50 @@ weatherApp.controller('tomorrowController', ['$scope', '$filter', '$http', 'loca
           $scope.icon = forecast.icon_url;
         });
     });
+}]);
 
+weatherApp.controller('fiveController', ['$scope', '$filter', '$http', 'locationService', function($scope, $filter, $http, locationService){
+  $scope.city= locationService.city;
+  $scope.state= locationService.state;
+
+  $scope.unSnakeCity = function(){
+    return $filter('unSnakecase')($scope.city);
+  };
+
+  var baseURL = "http://api.wunderground.com/api/";
+
+  $http.get('data/key.json')
+    .success(function(data){
+      var key = data.appKey;
+      $http.get(baseURL + key + '/forecast10day/q/' + $scope.state + '/' + $scope.city + '.json')
+        .success(function(data){
+          var forecast = data.forecast.simpleforecast;
+          $scope.hi1 = forecast.forecastday[0].high.fahrenheit;
+          $scope.hi2 = forecast.forecastday[1].high.fahrenheit;
+          $scope.hi3 = forecast.forecastday[2].high.fahrenheit;
+          $scope.hi4 = forecast.forecastday[3].high.fahrenheit;
+          $scope.hi5 = forecast.forecastday[4].high.fahrenheit;
+          $scope.low1 = forecast.forecastday[0].low.fahrenheit;
+          $scope.low2 = forecast.forecastday[1].low.fahrenheit;
+          $scope.low3 = forecast.forecastday[2].low.fahrenheit;
+          $scope.low4 = forecast.forecastday[3].low.fahrenheit;
+          $scope.low5 = forecast.forecastday[4].low.fahrenheit;
+          $scope.forecast1 = data.forecast.txt_forecast.forecastday[0].fcttext;
+          $scope.forecast2 = data.forecast.txt_forecast.forecastday[1].fcttext;
+          $scope.forecast3 = data.forecast.txt_forecast.forecastday[2].fcttext;
+          $scope.forecast4 = data.forecast.txt_forecast.forecastday[3].fcttext;
+          $scope.forecast5 = data.forecast.txt_forecast.forecastday[4].fcttext;
+          $scope.icon1 = forecast.forecastday[0].icon_url;
+          $scope.icon2 = forecast.forecastday[1].icon_url;
+          $scope.icon3 = forecast.forecastday[2].icon_url;
+          $scope.icon4 = forecast.forecastday[3].icon_url;
+          $scope.icon5 = forecast.forecastday[4].icon_url;
+          console.log(data);
+        });
+    });
 
 
 }]);
+
+
+
