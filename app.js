@@ -9,6 +9,10 @@ weatherApp.config(function($routeProvider){
   .when('/today', {
     templateUrl: 'views/today.html',
     controller: 'todayController'
+  })
+  .when('/tomorrow', {
+    templateUrl: 'views/tomorrow.html',
+    controller: 'tomorrowController'
   });
 });
 
@@ -96,8 +100,38 @@ weatherApp.controller('todayController', ['$scope', '$filter', '$http', 'locatio
           $scope.hi = forecast.high.fahrenheit;
           $scope.lo = forecast.low.fahrenheit;
           $scope.forecast = data.forecast.txt_forecast.forecastday[0].fcttext;
+          $scope.date = forecast.date.monthname +  ' ' + forecast.date.day + ', ' + forecast.date.year;
+          $scope.icon = forecast.icon_url;
           console.log(data);
         });
     });
+
+}]);
+
+weatherApp.controller('tomorrowController', ['$scope', '$filter', '$http', 'locationService', function($scope, $filter, $http, locationService){
+  $scope.city= locationService.city;
+  $scope.state= locationService.state;
+
+  $scope.unSnakeCity = function(){
+    return $filter('unSnakecase')($scope.city);
+  };
+
+  var baseURL = "http://api.wunderground.com/api/";
+
+  $http.get('data/key.json')
+    .success(function(data){
+      var key = data.appKey;
+      $http.get(baseURL + key + '/forecast/q/' + $scope.state + '/' + $scope.city + '.json')
+        .success(function(data){
+          var forecast = data.forecast.simpleforecast.forecastday[1];
+          $scope.hi = forecast.high.fahrenheit;
+          $scope.lo = forecast.low.fahrenheit;
+          $scope.forecast = data.forecast.txt_forecast.forecastday[1].fcttext;
+          $scope.date = forecast.date.monthname +  ' ' + forecast.date.day + ', ' + forecast.date.year;
+          $scope.icon = forecast.icon_url;
+        });
+    });
+
+
 
 }]);
