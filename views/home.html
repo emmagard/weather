@@ -1,22 +1,22 @@
 <div ng-controller= "homeController">
-  <div class="row">
-    <div class="col-lg-4 col-lg-offset-4 text-input">
 
-      <h1>Find weather for</h1>
-      <h1>{{ unSnakeCity() }}, {{ uppercaseState() }} </h1>
+      <h1 id= "home-title">Find weather for:</h1>
+      <div class= "focus-circle">
 
-      <div class="form-group">
-        <label for= "city">City</label>
-        <input type= "text" class= "form-control" ng-model= "city" placeholder= "Enter city">
+        <h1 class= "place" id= "place-home">{{ unSnakeCity() }}, {{ uppercaseState() }} </h1>
+        <div class= "inputs">
+          <div class= "form-group">
+            <label for= "city">City</label>
+            <input type= "text" class= "form-control" ng-model= "city" placeholder= "Enter city">
+          </div>
+
+          <div class= "form-group">
+            <label for= "state">State</label>
+            <input type= "text" class= "form-control" ng-model= "state" placeholder= "Enter state abbreviation" minlength= "2" maxlength= "2">
+          </div>
+        </div>
+
       </div>
-
-      <div class="form-group">
-        <label for= "state">State</label>
-        <input type= "text" class= "form-control" ng-model= "state" placeholder= "Enter state abbreviation">
-      </div>
-
-    </div><!-- column -->
-  </div><!-- row -->
 
   <div class= "time-buttons">
     <a class= "btn btn-default" id= "today" href= "#/today">Today</a>

@@ -1,15 +1,21 @@
 <div class= "text-center">
-  <h1 id= "todaysForecast">Today's Forecast for</h1>
-  <h1>{{ unSnakeCity() }}, {{ state }}</h1>
-  <h2>{{ date }}</h2>
+  <h1 id= "todays-forecast">Forecast for {{ unSnakeCity() }}, {{ state }}</h1>
 
-  <img src= "{{ icon }}">
+  <div class= "focus-circle1">
+    <h3>{{ date }}</h3>
+    <img class= "icon" src= "{{ icon }}">
 
-  <h3>High: {{ hi }} Low: {{ lo }}</h3>
-  <p> {{ forecast }}</p>
+    <h3><span class= "hi">{{ hi }}°</span> <span class= "lo">{{ lo }}°</span></h3>
+    <p> {{ forecast }}</p>
+  </div>
 
-  <h2>Current Conditions</h2>
-  <h3>Temperature: {{ temperature }}</h3>
-  <h4>Weather: {{ weather }}</h4>
-  <h5>Wind: {{ wind }}</h5>
+  <div class= "current-conditions">
+    <h2>Current Conditions</h2>
+    <div class= "focus-circle2">
+
+      <h3 class= "current-temp">{{ temperature }}°</h3>
+      <h4>{{ weather }}</h4>
+      <p>Wind: {{ wind }}</p>
+    </div>
+  </div>
 </div>

@@ -110,6 +110,7 @@ weatherApp.controller('todayController', ['$scope', '$filter', '$http', 'locatio
         });
     });
 
+
 }]);
 
 weatherApp.controller('tomorrowController', ['$scope', '$filter', '$http', 'locationService', function($scope, $filter, $http, locationService){
@@ -173,7 +174,7 @@ weatherApp.controller('fiveController', ['$scope', '$filter', '$http', 'location
           $scope.icon3 = forecast.forecastday[2].icon_url;
           $scope.icon4 = forecast.forecastday[3].icon_url;
           $scope.icon5 = forecast.forecastday[4].icon_url;
-          console.log(data);
+          console.log($scope);
         });
     });
 
