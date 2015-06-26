@@ -1,56 +1,67 @@
 <div class= "text-center">
-  <h1 id= "5dayForecast">Forecast for the next 5 days</h1>
-  <h1 class= "place">{{ unSnakeCity() }}, {{ state }}</h1>
+  <h1 id= "fiveday-forecast">Five day forecast for {{ unSnakeCity() }}, {{ state }}</h1>
 
   <div class="row">
 
-    <div class= "col-lg-2 col-lg-offset-1">
-      <div class= "thumbnail">
+    <div class= "col-lg-3 fiveday-firstday">
+      <div class= "thumbnail fiveday">
+        <h3>{{conditions.forecastday[0].title}}</h3>
         <img src= "{{ icon1 }}">
         <div class= "caption">
-          <h3>High: {{ hi1 }} Low: {{ low1 }}</h3>
-          <p> {{ forecast1 }} </p>
+          <h3><span class= "hi">{{ hi1 }}°</span> <span class= "lo">{{ lo1 }}°</span></h3>
+          <p> {{ conditions.forecastday[0].fcttext }} </p>
         </div>
       </div>
     </div>
-    <div class= "col-lg-2">
-      <div class= "thumbnail">
+    <div class= "col-lg-3">
+      <div class= "thumbnail fiveday">
+        <h3>{{conditions.forecastday[2].title}}</h3>
         <img src= "{{ icon2 }}">
         <div class= "caption">
-          <h3>High: {{ hi2 }} Low: {{ low2 }}</h3>
-          <p> {{ forecast2 }} </p>
+          <h3><span class= "hi">{{ hi2 }}°</span> <span class= "lo">{{ lo2 }}°</span></h3>
+          <p> {{ conditions.forecastday[2].fcttext }} </p>
         </div>
       </div>
     </div>
-    <div class= "col-lg-2">
-      <div class= "thumbnail">
+    <div class= "col-lg-3">
+      <div class= "thumbnail fiveday">
+        <h3>{{conditions.forecastday[4].title}}</h3>
         <img src= "{{ icon3 }}">
         <div class= "caption">
-          <h3>High: {{ hi3 }} Low: {{ low3 }}</h3>
-          <p> {{ forecast3 }} </p>
+          <h3><span class= "hi">{{ hi3 }}°</span> <span class= "lo">{{ lo3 }}°</span></h3>
+          <p> {{ conditions.forecastday[4].fcttext }} </p>
         </div>
       </div>
     </div>
-    <div class= "col-lg-2">
-      <div class= "thumbnail">
+  </div>
+  <div class= "row">
+    <div class= "col-lg-3 col-lg-offset-3">
+      <div class= "thumbnail fiveday">
+        <h3>{{conditions.forecastday[6].title}}</h3>
         <img src= "{{ icon4 }}">
         <div class= "caption">
-          <h3>High: {{ hi4 }} Low: {{ low4 }}</h3>
-          <p> {{ forecast4 }} </p>
+          <h3><span class= "hi">{{ hi4 }}°</span> <span class= "lo">{{ lo4 }}°</span></h3>
+          <p> {{ conditions.forecastday[6].fcttext }} </p>
         </div>
       </div>
     </div>
-    <div class= "col-lg-2">
-      <div class= "thumbnail">
+    <div class= "col-lg-3">
+      <div class= "thumbnail fiveday">
+        <h3>{{conditions.forecastday[8].title}}</h3>
         <img src= "{{ icon5 }}">
         <div class= "caption">
-          <h3>High: {{ hi5 }} Low: {{ low5 }}</h3>
-          <p> {{ forecast5 }} </p>
+          <h3><span class= "hi">{{ hi5 }}°</span> <span class= "lo">{{ lo5 }}°</span></h3>
+          <p> {{ conditions.forecastday[8].fcttext }} </p>
         </div>
       </div>
     </div>
 
   </div>
 
+  <div class= "time-buttons">
+      <a class= "btn btn-default" id= "today" href= "#/today">Today</a>
+      <a class= "btn btn-default" id= "tomorrow" href= "#/tomorrow">Tomorrow</a>
+      <a class= "btn btn-default" id= "five" href= "#/fiveday">5-day</a>
+  </div>
 </div>
 

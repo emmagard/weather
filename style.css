@@ -1,6 +1,7 @@
 
 body{
   background-color: #99D7ED;
+  min-height: 100%;
 }
 
 h1{
@@ -13,8 +14,8 @@ label{
   left: -9999px;
 }
 
-#home-title{
-  margin-top: 5%;
+#home-title, #todays-forecast, #fiveday-forecast{
+  margin-top: 3%;
   margin-bottom: 4%;
 }
 
@@ -44,6 +45,7 @@ label{
   border-radius: 100%;
   text-align: center;
   margin-left: 275px;
+  margin-top: -20px;
 }
 
 .focus-circle2{
@@ -52,8 +54,7 @@ label{
   width: 250px;
   border-radius: 100%;
   text-align: center;
-
-
+  margin-top: -20px;
 }
 
 .current-conditions{
@@ -71,14 +72,25 @@ label{
   margin-bottom: 50px;
 }
 
+.fiveday-firstday{
+  margin-left: 146.25px;
+}
+
+.fiveday{
+  height: 262px;
+  width: 262px;
+  border-radius: 100%;
+}
+
 .inputs{
   margin-top: 70px;
   padding: 0 50px 0 50px;
 }
 
 .time-buttons{
-  margin: 5% auto 5% auto;
-  width: 298px;
+  text-align: center;
+  margin: 3% auto 3% auto;
+  width: 400px;
 }
 
 .text-center{
@@ -96,5 +108,7 @@ label{
 }
 footer{
   text-align: center;
-  padding-top: 15%;
+  padding-top: 1%;
+  padding-bottom: 3%;
+  font-size: 0.80em;
 }

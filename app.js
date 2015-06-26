@@ -153,28 +153,25 @@ weatherApp.controller('fiveController', ['$scope', '$filter', '$http', 'location
       var key = data.appKey;
       $http.get(baseURL + key + '/forecast10day/q/' + $scope.state + '/' + $scope.city + '.json')
         .success(function(data){
+          $scope.allWeather = data.forecast;
           var forecast = data.forecast.simpleforecast;
           $scope.hi1 = forecast.forecastday[0].high.fahrenheit;
           $scope.hi2 = forecast.forecastday[1].high.fahrenheit;
           $scope.hi3 = forecast.forecastday[2].high.fahrenheit;
           $scope.hi4 = forecast.forecastday[3].high.fahrenheit;
           $scope.hi5 = forecast.forecastday[4].high.fahrenheit;
-          $scope.low1 = forecast.forecastday[0].low.fahrenheit;
-          $scope.low2 = forecast.forecastday[1].low.fahrenheit;
-          $scope.low3 = forecast.forecastday[2].low.fahrenheit;
-          $scope.low4 = forecast.forecastday[3].low.fahrenheit;
-          $scope.low5 = forecast.forecastday[4].low.fahrenheit;
-          $scope.forecast1 = data.forecast.txt_forecast.forecastday[0].fcttext;
-          $scope.forecast2 = data.forecast.txt_forecast.forecastday[1].fcttext;
-          $scope.forecast3 = data.forecast.txt_forecast.forecastday[2].fcttext;
-          $scope.forecast4 = data.forecast.txt_forecast.forecastday[3].fcttext;
-          $scope.forecast5 = data.forecast.txt_forecast.forecastday[4].fcttext;
+          $scope.lo1 = forecast.forecastday[0].low.fahrenheit;
+          $scope.lo2 = forecast.forecastday[1].low.fahrenheit;
+          $scope.lo3 = forecast.forecastday[2].low.fahrenheit;
+          $scope.lo4 = forecast.forecastday[3].low.fahrenheit;
+          $scope.lo5 = forecast.forecastday[4].low.fahrenheit;
+          $scope.conditions = data.forecast.txt_forecast;
           $scope.icon1 = forecast.forecastday[0].icon_url;
           $scope.icon2 = forecast.forecastday[1].icon_url;
           $scope.icon3 = forecast.forecastday[2].icon_url;
           $scope.icon4 = forecast.forecastday[3].icon_url;
           $scope.icon5 = forecast.forecastday[4].icon_url;
-          console.log($scope);
+          console.log($scope.allWeather);
         });
     });
 
